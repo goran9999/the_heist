@@ -30,6 +30,7 @@ pub struct BurnToken<'info> {
     ///CHECK
     pub edition: UncheckedAccount<'info>,
     #[account()]
+    ///CHECK
     pub collection_metadata: UncheckedAccount<'info>,
     #[account()]
     ///CHECK
