@@ -51,7 +51,7 @@ pub struct BurnToken<'info> {
     pub token_program: Program<'info, Token>,
 }
 
-pub fn burn(ctx: Context<BurnToken>) -> Result<()> {
+pub fn burn_token(ctx: Context<BurnToken>) -> Result<()> {
     let user_lock = &mut ctx.accounts.user_lock;
 
     require!(
