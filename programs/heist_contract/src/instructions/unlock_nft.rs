@@ -15,13 +15,13 @@ pub fn unlock_nft(ctx: Context<LockUnlockNft>) -> Result<()> {
 
     check_metadata(ctx.accounts.nft_metadata.to_account_info())?;
 
-    if !user_lock
-        .locked_nfts
-        .iter()
-        .any(|l| l.mint == ctx.accounts.nft_mint.key())
-    {
-        return Err(HeistError::InvalidOwner.into());
-    }
+    require!(
+        user_lock
+            .locked_nfts
+            .iter()
+            .any(|n| n.mint == ctx.accounts.nft_mint.key()),
+        HeistError::UserDidNotStake
+    );
 
     user_lock
         .locked_nfts

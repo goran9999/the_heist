@@ -10,6 +10,8 @@ use anchor_spl::{
 
 use mpl_token_metadata::ID as MPX_ID;
 
+pub mod burn;
+pub use burn::*;
 pub mod unlock_nft;
 
 use crate::state::{UserLock, HEIST_SEED};

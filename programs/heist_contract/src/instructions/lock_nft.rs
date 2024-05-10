@@ -78,9 +78,8 @@ pub fn lock_nft(ctx: Context<LockUnlockNft>) -> Result<()> {
             sysvar_instructions: &ctx.accounts.sysvar_instructions,
         },
         DelegateInstructionArgs {
-            delegate_args: DelegateArgs::LockedTransferV1 {
+            delegate_args: DelegateArgs::UtilityV1 {
                 amount: 1,
-                locked_address: user_lock.key(),
                 authorization_data: None,
             },
         },

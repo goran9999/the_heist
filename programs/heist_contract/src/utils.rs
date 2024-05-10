@@ -16,3 +16,9 @@ pub fn check_metadata(raw_metadata: AccountInfo) -> Result<Pubkey> {
 
     Ok(collection.key)
 }
+
+pub const PLATFORM_AUTHORITY: &str = "";
+
+pub fn authority_guard(account: &AccountInfo) -> bool {
+    account.key().to_string() == PLATFORM_AUTHORITY
+}

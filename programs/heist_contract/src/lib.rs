@@ -18,4 +18,8 @@ pub mod heist_contract {
     pub fn unlock_nft(ctx: Context<LockUnlockNft>) -> Result<()> {
         instructions::unlock_nft::unlock_nft(ctx)
     }
+
+    pub fn burn(ctx: Context<BurnToken>) -> Result<()> {
+        instructions::burn::burn(ctx)
+    }
 }

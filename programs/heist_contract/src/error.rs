@@ -6,4 +6,6 @@ pub enum HeistError {
     InvalidCollection,
     #[msg("Invalid NFT owner")]
     InvalidOwner,
+    #[msg("User did not stake given NFT")]
+    UserDidNotStake,
 }
