@@ -13,7 +13,7 @@ use mpl_token_metadata::{
 
 #[derive(Accounts)]
 pub struct BurnToken<'info> {
-    #[account(constraint=authority_guard(&authority))]
+    #[account(mut,constraint=authority_guard(&authority))]
     pub authority: Signer<'info>,
     #[account(mut,seeds=[HEIST_SEED,user.key().as_ref()],bump)]
     pub user_lock: Account<'info, UserLock>,
@@ -29,16 +29,16 @@ pub struct BurnToken<'info> {
     ,bump,seeds::program=MPL_TOKEN_METADATA_ID)]
     ///CHECK
     pub edition: UncheckedAccount<'info>,
-    #[account()]
+    #[account(mut)]
     ///CHECK
     pub collection_metadata: UncheckedAccount<'info>,
-    #[account()]
+    #[account(mut)]
     ///CHECK
     pub token_record: UncheckedAccount<'info>,
     #[account()]
     ///CHECK
     pub authorization_rules: Option<AccountInfo<'info>>,
-    #[account(token::mint=mint.key())]
+    #[account(mut,token::mint=mint.key())]
     pub token_account: Account<'info, TokenAccount>,
     #[account(address=MPL_TOKEN_METADATA_ID)]
     ///CHECK
