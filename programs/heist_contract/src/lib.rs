@@ -20,6 +20,6 @@ pub mod heist_contract {
     }
 
     pub fn burn_token(ctx: Context<BurnToken>) -> Result<()> {
-        instructions::burn_token::burn_token(ctx)
+        instructions::burn_nft::burn_nft(ctx)
     }
 }
