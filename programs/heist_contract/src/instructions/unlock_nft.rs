@@ -1,8 +1,6 @@
 use anchor_lang::prelude::*;
 use mpl_token_metadata::{
-    instructions::{
-        RevokeLockedTransferV1Cpi, RevokeLockedTransferV1CpiAccounts, UnlockCpi, UnlockCpiAccounts,
-    },
+    instructions::{RevokeUtilityV1Cpi, RevokeUtilityV1CpiAccounts, UnlockCpi, UnlockCpiAccounts},
     types::UnlockArgs,
 };
 
@@ -56,9 +54,9 @@ pub fn unlock_nft(ctx: Context<LockUnlockNft>) -> Result<()> {
         &[ctx.bumps.user_lock],
     ]])?;
 
-    RevokeLockedTransferV1Cpi::new(
+    RevokeUtilityV1Cpi::new(
         &ctx.accounts.token_metadata,
-        RevokeLockedTransferV1CpiAccounts {
+        RevokeUtilityV1CpiAccounts {
             authority: &ctx.accounts.payer.to_account_info(),
             authorization_rules: ctx.accounts.authorization_rules.as_ref(),
             authorization_rules_program: Some(&ctx.accounts.authorization_rules_program),
