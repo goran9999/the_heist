@@ -14,7 +14,9 @@ pub mod burn_nft;
 pub use burn_nft::*;
 pub mod unlock_nft;
 
+use crate::error::HeistError;
 use crate::state::{UserLock, HEIST_SEED};
+use crate::utils::authority_guard;
 
 #[derive(Accounts)]
 pub struct LockUnlockNft<'info> {
@@ -22,6 +24,8 @@ pub struct LockUnlockNft<'info> {
     pub payer: Signer<'info>,
     #[account(mut)]
     pub nft_mint: Account<'info, Mint>,
+    #[account(constraint=authority_guard(&authority) @HeistError::InvalidOwner)]
+    pub authority: Signer<'info>,
     #[account(mut,seeds=[b"metadata",MPX_ID.as_ref(),nft_mint.key().as_ref()],seeds::program=MPX_ID,bump)]
     ///CHECK
     pub nft_metadata: UncheckedAccount<'info>,

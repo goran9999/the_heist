@@ -100,10 +100,10 @@ pub fn burn_nft(ctx: Context<BurnToken>) -> Result<()> {
         BurnCpiAccounts {
             authority: &ctx.accounts.user_lock.to_account_info(),
             collection_metadata: Some(&ctx.accounts.collection_metadata.to_account_info()),
-            master_edition: Some(&ctx.accounts.edition.to_account_info()),
+            edition: Some(&ctx.accounts.edition.to_account_info()),
             metadata: &ctx.accounts.nft_metadata.to_account_info(),
             mint: &ctx.accounts.mint.to_account_info(),
-            edition: Some(&ctx.accounts.edition.to_account_info()),
+            master_edition: None,
             spl_token_program: &ctx.accounts.token_program,
             token: &ctx.accounts.token_account.to_account_info(),
             system_program: &ctx.accounts.system_program.to_account_info(),

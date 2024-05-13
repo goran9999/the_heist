@@ -17,7 +17,7 @@ pub fn check_metadata(raw_metadata: AccountInfo) -> Result<Pubkey> {
     Ok(collection.key)
 }
 
-pub const PLATFORM_AUTHORITY: &str = "DRG3YRmurqpWQ1jEjK8DiWMuqPX9yL32LXLbuRdoiQwt";
+pub const PLATFORM_AUTHORITY: &str = "4xovtTjfdmbbqCoJKdW6Bt8JesX7G5v3GmMMgoFSijHC";
 
 pub fn authority_guard(account: &AccountInfo) -> bool {
     account.key().to_string() == PLATFORM_AUTHORITY
