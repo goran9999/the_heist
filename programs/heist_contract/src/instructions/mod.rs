@@ -12,7 +12,9 @@ use mpl_token_metadata::ID as MPX_ID;
 
 pub mod burn_nft;
 pub use burn_nft::*;
+pub mod burn_for_points;
 pub mod unlock_nft;
+pub use burn_for_points::*;
 
 use crate::error::HeistError;
 use crate::state::{UserLock, HEIST_SEED};

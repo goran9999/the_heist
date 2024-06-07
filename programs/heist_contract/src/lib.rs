@@ -22,4 +22,10 @@ pub mod heist_contract {
     pub fn burn_nft(ctx: Context<BurnToken>) -> Result<()> {
         instructions::burn_nft::burn_nft(ctx)
     }
+
+    pub fn burn_for_points<'a, 'b, 'c, 'info>(
+        ctx: Context<'a, 'b, 'c, 'info, BurnForPoints<'info>>,
+    ) -> Result<()> {
+        instructions::burn_for_points(ctx)
+    }
 }
